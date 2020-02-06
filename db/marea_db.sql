@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-01-2020 a las 18:29:04
+-- Tiempo de generación: 06-02-2020 a las 16:01:57
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.11
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `books`
+-- Estructura de tabla para la tabla `book`
 --
 
-CREATE TABLE `books` (
+CREATE TABLE `book` (
   `id_book` int(11) NOT NULL,
   `name_book` varchar(20) NOT NULL,
   `key_book` int(20) DEFAULT NULL,
@@ -36,19 +36,16 @@ CREATE TABLE `books` (
   `access_book` tinyint(1) DEFAULT NULL,
   `link_book` varchar(100) NOT NULL,
   `date` date NOT NULL,
-  `id_client` int(11) NOT NULL,
-  `name_client` varchar(20) DEFAULT NULL,
-  `mail_client` varchar(20) NOT NULL,
-  `tel_client` int(50) NOT NULL
+  `id_client` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clients`
+-- Estructura de tabla para la tabla `client`
 --
 
-CREATE TABLE `clients` (
+CREATE TABLE `client` (
   `id_client` int(11) NOT NULL,
   `name_client` varchar(20) NOT NULL,
   `mail_client` varchar(20) NOT NULL,
@@ -99,17 +96,17 @@ CREATE TABLE `user` (
 --
 
 --
--- Indices de la tabla `books`
+-- Indices de la tabla `book`
 --
-ALTER TABLE `books`
+ALTER TABLE `book`
   ADD PRIMARY KEY (`id_client`),
   ADD UNIQUE KEY `id_book` (`id_book`),
   ADD UNIQUE KEY `key_book` (`key_book`);
 
 --
--- Indices de la tabla `clients`
+-- Indices de la tabla `client`
 --
-ALTER TABLE `clients`
+ALTER TABLE `client`
   ADD PRIMARY KEY (`id_client`);
 
 --
@@ -132,15 +129,15 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT de la tabla `books`
+-- AUTO_INCREMENT de la tabla `book`
 --
-ALTER TABLE `books`
+ALTER TABLE `book`
   MODIFY `id_book` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `clients`
+-- AUTO_INCREMENT de la tabla `client`
 --
-ALTER TABLE `clients`
+ALTER TABLE `client`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -154,10 +151,10 @@ ALTER TABLE `user`
 --
 
 --
--- Filtros para la tabla `books`
+-- Filtros para la tabla `book`
 --
-ALTER TABLE `books`
-  ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id_client`) ON DELETE CASCADE;
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
